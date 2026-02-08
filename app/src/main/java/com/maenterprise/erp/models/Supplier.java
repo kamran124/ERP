@@ -9,10 +9,14 @@ public class Supplier {
     @PrimaryKey
     @NonNull
     public String supplierId;
+    
+    @NonNull
     public String supplierName;
+    
     public String contactDetails;
-    public int paymentTermsDays;
-    public boolean isActive;
+    public int paymentTermsDays = 0;
+    public boolean isActive = true;
+    public String imageUrl;
 
     public Supplier() {}
 }

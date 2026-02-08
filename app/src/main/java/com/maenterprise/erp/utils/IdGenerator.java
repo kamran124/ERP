@@ -1,23 +1,33 @@
 package com.maenterprise.erp.utils;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Locale;
+import java.util.UUID;
 
 public class IdGenerator {
     public static String generateBatchId() {
-        String year = new SimpleDateFormat("yyyy", Locale.getDefault()).format(new Date());
-        long timestamp = System.currentTimeMillis() % 100000;
-        return String.format("BATCH-%s-%03d", year, timestamp);
+        return "BATCH-" + System.currentTimeMillis();
+    }
+
+    public static String generatePurchaseId() {
+        return "PUR-" + System.currentTimeMillis();
     }
 
     public static String generateSaleId() {
-        String year = new SimpleDateFormat("yyyy", Locale.getDefault()).format(new Date());
-        long timestamp = System.currentTimeMillis() % 100000;
-        return String.format("SALE-%s-%03d", year, timestamp);
+        return "SALE-" + System.currentTimeMillis();
     }
-    
+
     public static String generatePaymentId() {
         return "PAY-" + System.currentTimeMillis();
+    }
+
+    public static String generateProductId() {
+        return "PROD-" + System.currentTimeMillis();
+    }
+
+    public static String generateCustomerId() {
+        return "CUST-" + System.currentTimeMillis();
+    }
+
+    public static String generateSupplierId() {
+        return "SUPP-" + System.currentTimeMillis();
     }
 }

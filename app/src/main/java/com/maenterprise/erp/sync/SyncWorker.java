@@ -42,6 +42,7 @@ public class SyncWorker extends Worker {
             syncMasterData();
             syncPurchaseBatches();
             syncSalesTransactions();
+            syncSaleItems();
             syncAllocations();
             syncPayments();
 
@@ -132,7 +133,7 @@ public class SyncWorker extends Worker {
         List<PurchaseBatch> unsynced = erpDao.getUnsyncedBatches();
         for (PurchaseBatch batch : unsynced) {
             List<Object> row = Arrays.asList(
-                batch.batchId, batch.purchaseDate, batch.productId, 
+                batch.batchId, batch.purchaseId, batch.purchaseDate, batch.productId, 
                 batch.purchasePricePerSku, batch.batchQuantity, 
                 batch.remainingQuantity, batch.supplierId, batch.remarks
             );
@@ -146,9 +147,8 @@ public class SyncWorker extends Worker {
         List<SalesTransaction> unsynced = erpDao.getUnsyncedSales();
         for (SalesTransaction sale : unsynced) {
             List<Object> row = Arrays.asList(
-                sale.saleId, sale.saleDate, sale.customerId, sale.productId,
-                sale.quantitySku, sale.sellingPricePerSku, sale.salesChannel,
-                sale.invoiceNumber, sale.paymentStatus, sale.remarks
+                sale.saleId, sale.saleDate, sale.customerId,
+                sale.salesChannel, sale.invoiceNumber, sale.paymentStatus, sale.remarks
             );
             sheetsHelper.appendRow("Sales_Transactions", row);
             sale.isSynced = true;
@@ -156,11 +156,24 @@ public class SyncWorker extends Worker {
         erpDao.updateSalesTransactions(unsynced);
     }
 
+    private void syncSaleItems() throws Exception {
+        List<SaleItem> unsynced = erpDao.getUnsyncedSaleItems();
+        for (SaleItem item : unsynced) {
+            List<Object> row = Arrays.asList(
+                item.saleItemId, item.saleId, item.productId,
+                item.quantitySku, item.sellingPricePerSku, item.schemeGlassPerSku, item.remarks
+            );
+            sheetsHelper.appendRow("Sale_Items", row);
+            item.isSynced = true;
+        }
+        erpDao.updateSaleItems(unsynced);
+    }
+
     private void syncAllocations() throws Exception {
         List<SellBatchAllocation> unsynced = erpDao.getUnsyncedAllocations();
         for (SellBatchAllocation alloc : unsynced) {
             List<Object> row = Arrays.asList(
-                alloc.allocationId, alloc.saleId, alloc.productId,
+                alloc.allocationId, alloc.saleId, alloc.productId, alloc.sellProductId,
                 alloc.batchId, alloc.allocatedQuantity, alloc.purchasePricePerSku
             );
             sheetsHelper.appendRow("Sell_Batch_Allocation", row);

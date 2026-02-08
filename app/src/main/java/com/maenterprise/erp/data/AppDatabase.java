@@ -6,7 +6,17 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import com.maenterprise.erp.models.*;
 
-@Database(entities = {Product.class, Customer.class, Supplier.class, PurchaseBatch.class, SalesTransaction.class, SellBatchAllocation.class, Payment.class}, version = 3, exportSchema = false)
+@Database(entities = {
+        Product.class,
+        Customer.class,
+        Supplier.class,
+        PurchaseTransaction.class,
+        PurchaseBatch.class,
+        SalesTransaction.class,
+        SaleItem.class,
+        SellBatchAllocation.class,
+        Payment.class
+}, version = 4)
 public abstract class AppDatabase extends RoomDatabase {
     public abstract ErpDao erpDao();
 
@@ -17,7 +27,7 @@ public abstract class AppDatabase extends RoomDatabase {
             synchronized (AppDatabase.class) {
                 if (INSTANCE == null) {
                     INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
-                            AppDatabase.class, "erp_database")
+                                    AppDatabase.class, "erp_database")
                             .fallbackToDestructiveMigration()
                             .build();
                 }

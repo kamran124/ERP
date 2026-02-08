@@ -9,11 +9,15 @@ public class Customer {
     @PrimaryKey
     @NonNull
     public String customerId;
+    
+    @NonNull
     public String customerName;
-    public String customerType;
-    public double creditLimit;
-    public int paymentTermsDays;
-    public boolean isActive;
+    
+    public String customerType = "WHOLESALE"; // WHOLESALE / RETAIL
+    public double creditLimit = 0;
+    public int paymentTermsDays = 0;
+    public boolean isActive = true;
+    public String imageUrl;
 
     public Customer() {}
 }

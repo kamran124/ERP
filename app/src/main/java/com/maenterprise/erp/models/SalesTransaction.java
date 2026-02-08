@@ -9,14 +9,18 @@ public class SalesTransaction {
     @PrimaryKey
     @NonNull
     public String saleId;
+    
+    @NonNull
     public String saleDate;
+    
+    @NonNull
     public String customerId;
-    public String productId;
-    public double quantitySku;
-    public double sellingPricePerSku;
-    public String salesChannel;
+    
+    @NonNull
     public String invoiceNumber;
-    public String paymentStatus;
+    
+    public String salesChannel = "WHOLESALE"; // WHOLESALE / RETAIL
+    public String paymentStatus = "UNPAID"; // UNPAID / PARTIAL / PAID
     public String remarks;
     public boolean isSynced;
 

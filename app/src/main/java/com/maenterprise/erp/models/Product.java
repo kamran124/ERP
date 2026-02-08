@@ -9,10 +9,15 @@ public class Product {
     @PrimaryKey
     @NonNull
     public String productId;
+    
+    @NonNull
     public String productName;
+    
     public String brand;
     public String packSize;
-    public boolean isActive;
+    public int baseGlassPerSku = 24;
+    public boolean isActive = true;
+    public String imageUrl;
 
     public Product() {}
 }

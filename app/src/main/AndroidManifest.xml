@@ -27,16 +27,19 @@
         <activity
             android:name=".SaleEntryActivity"
             android:label="New Sale"
+            android:windowSoftInputMode="adjustResize"
             android:exported="false" />
 
         <activity
             android:name=".PurchaseEntryActivity"
             android:label="New Purchase"
+            android:windowSoftInputMode="adjustResize"
             android:exported="false" />
 
         <activity
             android:name=".PaymentEntryActivity"
             android:label="Payment Entry"
+            android:windowSoftInputMode="adjustResize"
             android:exported="false" />
 
         <activity
