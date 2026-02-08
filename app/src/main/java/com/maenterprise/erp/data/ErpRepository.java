@@ -26,6 +26,22 @@ public class ErpRepository {
         return erpDao.getActiveCustomers();
     }
 
+    public LiveData<List<Supplier>> getActiveSuppliers() {
+        return erpDao.getActiveSuppliers();
+    }
+
+    public void insertProduct(Product product) {
+        executorService.execute(() -> erpDao.insertProduct(product));
+    }
+
+    public void insertCustomer(Customer customer) {
+        executorService.execute(() -> erpDao.insertCustomer(customer));
+    }
+
+    public void insertSupplier(Supplier supplier) {
+        executorService.execute(() -> erpDao.insertSupplier(supplier));
+    }
+
     public void insertPurchaseBatch(PurchaseBatch batch) {
         executorService.execute(() -> erpDao.insertPurchaseBatch(batch));
     }

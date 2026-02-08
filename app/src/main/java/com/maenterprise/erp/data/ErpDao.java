@@ -14,14 +14,29 @@ public interface ErpDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertProducts(List<Product> products);
 
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    void insertProduct(Product product);
+
     @Query("SELECT * FROM products WHERE isActive = 1")
     LiveData<List<Product>> getActiveProducts();
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertCustomers(List<Customer> customers);
 
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    void insertCustomer(Customer customer);
+
     @Query("SELECT * FROM customers WHERE isActive = 1")
     LiveData<List<Customer>> getActiveCustomers();
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    void insertSuppliers(List<Supplier> suppliers);
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    void insertSupplier(Supplier supplier);
+
+    @Query("SELECT * FROM suppliers WHERE isActive = 1")
+    LiveData<List<Supplier>> getActiveSuppliers();
 
     @Insert
     void insertPurchaseBatch(PurchaseBatch batch);

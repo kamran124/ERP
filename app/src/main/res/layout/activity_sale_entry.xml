@@ -1,30 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:background="#F5F7FA">
 
-    <com.google.android.material.appbar.AppBarLayout
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@android:color/transparent"
-        app:elevation="0dp">
-
-        <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            app:title="New Sale"
-            app:navigationIcon="@drawable/ic_back"
-            app:titleTextColor="#1A1C1E" />
-
-    </com.google.android.material.appbar.AppBarLayout>
+        android:layout_height="?attr/actionBarSize"
+        app:title="New Sale"
+        app:navigationIcon="@drawable/ic_back"
+        app:titleTextColor="#1A1C1E"
+        android:background="@android:color/white"
+        app:elevation="4dp" />
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true">
 
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
@@ -41,6 +37,7 @@
                 android:padding="24dp">
 
                 <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tilDate"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Sale Date"
@@ -54,27 +51,33 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tilCustomer"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Customer"
-                    style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                    style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                     android:layout_marginBottom="16dp">
-                    <com.google.android.material.textfield.TextInputEditText
+                    <AutoCompleteTextView
                         android:id="@+id/etCustomerId"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content"
+                        android:inputType="none"
+                        android:editable="false" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tilProduct"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Select Product"
-                    style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                    style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                     android:layout_marginBottom="16dp">
-                    <com.google.android.material.textfield.TextInputEditText
+                    <AutoCompleteTextView
                         android:id="@+id/etProductId"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content"
+                        android:inputType="none"
+                        android:editable="false" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <LinearLayout
@@ -83,6 +86,7 @@
                     android:orientation="horizontal">
 
                     <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/tilQuantity"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -98,6 +102,7 @@
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/tilPrice"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -114,6 +119,7 @@
                 </LinearLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tilChannel"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Channel"
@@ -126,6 +132,7 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tilStatus"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Status"
@@ -138,6 +145,7 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tilRemarks"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Remarks"
@@ -156,9 +164,11 @@
                     android:text="Process FIFO Sale"
                     app:cornerRadius="16dp"
                     android:textSize="16sp"
-                    android:backgroundTint="#4CAF50" />
+                    android:backgroundTint="#4CAF50"
+                    android:clickable="true"
+                    android:focusable="true" />
 
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
     </androidx.core.widget.NestedScrollView>
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+</LinearLayout>

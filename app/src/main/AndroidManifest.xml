@@ -24,6 +24,36 @@
             </intent-filter>
         </activity>
 
+        <activity
+            android:name=".SaleEntryActivity"
+            android:label="New Sale"
+            android:exported="false" />
+
+        <activity
+            android:name=".PurchaseEntryActivity"
+            android:label="New Purchase"
+            android:exported="false" />
+
+        <activity
+            android:name=".PaymentEntryActivity"
+            android:label="Payment Entry"
+            android:exported="false" />
+
+        <activity
+            android:name=".ProductActivity"
+            android:label="Products"
+            android:exported="false" />
+
+        <activity
+            android:name=".CustomerActivity"
+            android:label="Customers"
+            android:exported="false" />
+
+        <activity
+            android:name=".SupplierActivity"
+            android:label="Suppliers"
+            android:exported="false" />
+
     </application>
 
 </manifest>
