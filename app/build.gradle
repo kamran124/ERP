@@ -1,0 +1,60 @@
+plugins {
+    alias(libs.plugins.android.application)
+}
+
+android {
+    namespace 'com.maenterprise.erp'
+    compileSdk 35
+
+    defaultConfig {
+        applicationId "com.maenterprise.erp"
+        minSdk 24
+        targetSdk 35
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+    buildFeatures {
+        viewBinding true
+    }
+}
+
+dependencies {
+    implementation libs.appcompat
+    implementation libs.material
+    implementation libs.lifecycle.viewmodel
+    implementation libs.lifecycle.livedata
+
+    // Room
+    implementation libs.room.runtime
+    annotationProcessor libs.room.compiler
+
+    // WorkManager
+    implementation libs.work.runtime
+
+    // Google Sheets API
+    implementation (libs.google.api.client.android) {
+        exclude group: 'org.apache.httpcomponents'
+    }
+    implementation (libs.google.api.services.sheets) {
+        exclude group: 'org.apache.httpcomponents'
+    }
+    implementation libs.google.auth.library.oauth2.http
+    implementation libs.guava
+
+    testImplementation libs.junit
+    androidTestImplementation libs.ext.junit
+    androidTestImplementation libs.espresso.core
+}
